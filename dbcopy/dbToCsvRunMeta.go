@@ -86,8 +86,8 @@ func toRunListCsv(
 				row[7] = rl[idx].Run.Status
 				row[8] = rl[idx].Run.UpdateDateTime
 				row[9] = rl[idx].Run.RunDigest
-				row[9] = rl[idx].Run.ValueDigest
-				row[10] = rl[idx].Run.RunStamp
+				row[10] = rl[idx].Run.ValueDigest
+				row[11] = rl[idx].Run.RunStamp
 				idx++
 				return false, row, nil
 			}
