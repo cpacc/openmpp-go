@@ -366,7 +366,7 @@ func runList(srcDb *sql.DB, modelId int, runOpts *config.RunOptions) error {
 	}
 
 	// write model run rows into csv, including description
-	row := make([]string, 12)
+	row := make([]string, 13)
 
 	idx := 0
 	err = toCsvOutput(
@@ -380,21 +380,22 @@ func runList(srcDb *sql.DB, modelId int, runOpts *config.RunOptions) error {
 				row[0] = strconv.Itoa(rpl[idx].RunId)
 				row[1] = rpl[idx].Name
 				row[2] = strconv.Itoa(rpl[idx].SubCount)
-				row[3] = strconv.Itoa(rpl[idx].SubCompleted)
-				row[4] = rpl[idx].CreateDateTime
-				row[5] = rpl[idx].Status
-				row[6] = rpl[idx].UpdateDateTime
-				row[7] = rpl[idx].RunDigest
-				row[8] = rpl[idx].ValueDigest
-				row[9] = rpl[idx].RunStamp
-				row[10] = ""
+				row[3] = strconv.Itoa(rpl[idx].SubStarted)
+				row[4] = strconv.Itoa(rpl[idx].SubCompleted)
+				row[5] = rpl[idx].CreateDateTime
+				row[6] = rpl[idx].Status
+				row[7] = rpl[idx].UpdateDateTime
+				row[8] = rpl[idx].RunDigest
+				row[9] = rpl[idx].ValueDigest
+				row[10] = rpl[idx].RunStamp
 				row[11] = ""
+				row[12] = ""
 
 				// language, description and notes if any exist
 				if !theCfg.isNoLang && len(rpl[idx].Txt) > 0 {
 
-					row[10] = rpl[idx].Txt[0].LangCode
-					row[11] = rpl[idx].Txt[0].Descr
+					row[11] = rpl[idx].Txt[0].LangCode
+					row[12] = rpl[idx].Txt[0].Descr
 
 					nm := rpl[idx].Name
 					if isUseIdNames {
